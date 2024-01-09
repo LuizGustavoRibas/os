@@ -1,8 +1,8 @@
-const getServicos = "SELECT * FROM os";
-const getServicosById = "SELECT * FROM os WHERE id = $1";
-const addServicos = "INSERT INTO os (servico) VALUES ($1)";
-const removeServicos = "DELETE FROM os WHERE id = $1";
-const updateServicos = "UPDATE os SET servico = $1 WHERE id = $2";
+const getServicos = "SELECT * FROM servicos";
+const getServicosById = "SELECT * FROM servicos WHERE id = $1";
+const addServicos = "INSERT INTO servicos (servico) VALUES ($1)";
+const removeServicos = "DELETE FROM servicos WHERE id = $1";
+const updateServicos = "UPDATE servicos SET servico = $1 WHERE id = $2";
 
 module.exports = {
     getServicos,
