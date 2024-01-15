@@ -17,8 +17,8 @@ const getClientesById = (req, res) => {
 }
 
 const addClientes = (req, res) => {
-    const { razao_social, nome_fantasia, cnpj, cep, numero_endereco, bairro, cidade, estado, numero_telefone, email } = req.body;
-    pool.query(queries.addClientes, [razao_social, nome_fantasia, cnpj, cep, numero_endereco, bairro, cidade, estado, numero_telefone, email], (error, results) => {
+    const { razao_social, nome_fantasia, cnpj, cep, endereco, numero_endereco, bairro, cidade, estado, numero_telefone, email } = req.body;
+    pool.query(queries.addClientes, [razao_social, nome_fantasia, cnpj, cep, endereco, numero_endereco, bairro, cidade, estado, numero_telefone, email], (error, results) => {
         if (error) throw error;
         res.status(201).send("Cliente criado");
     })
