@@ -17,8 +17,8 @@ const getOsById = (req, res) => {
 }
 
 const addOs = (req, res) => {
-    const { data_hora_inicio, data_hora_fim, nome_cliente, id_cliente, nome_tecnico, servico, id_servico, valor } = req.body;
-    pool.query(queries.addOs, [data_hora_inicio, data_hora_fim, nome_cliente, id_cliente, nome_tecnico, servico, id_servico, valor], (error, results) => {
+    const { data_hora_inicio, data_hora_fim, nome_cliente, id_cliente, nome_tecnico, servico, id_servico, valor, obs } = req.body;
+    pool.query(queries.addOs, [data_hora_inicio, data_hora_fim, nome_cliente, id_cliente, nome_tecnico, servico, id_servico, valor, obs], (error, results) => {
         if (error) throw error;
         res.status(201).send("OS criada");
     })
