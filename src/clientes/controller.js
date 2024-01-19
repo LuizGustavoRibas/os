@@ -43,7 +43,7 @@ const removeClientes = (req, res) => {
 
 const updateClientes = (req, res) => {
     const id = parseInt(req.params.id);
-    const { razao_social, nome_fantasia, cnpj, cep, numero_endereco, bairro, cidade, estado, numero_telefone, email } = req.body;
+    const { razao_social, nome_fantasia, cnpj, cep, endereco, numero_endereco, bairro, cidade, estado, numero_telefone, email } = req.body;
 
     pool.query(queries.getClientesById, [id], (error, results) => {
         const noClientesFound = !results.rows.length;
@@ -51,7 +51,7 @@ const updateClientes = (req, res) => {
             res.send("Cliente não existe no banco de dados.");
         }
 
-        pool.query(queries.updateClientes, [razao_social, nome_fantasia, cnpj, cep, numero_endereco, bairro, cidade, estado, numero_telefone, email, id], (error, results) => {
+        pool.query(queries.updateClientes, [razao_social, nome_fantasia, cnpj, cep, endereco, numero_endereco, bairro, cidade, estado, numero_telefone, email, id], (error, results) => {
             if (error) throw error;
             res.status(200).send("Cliente atualizado com sucesso")
         });
