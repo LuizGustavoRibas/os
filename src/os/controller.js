@@ -17,8 +17,8 @@ const getOsById = (req, res) => {
 }
 
 const addOs = (req, res) => {
-    const { data_hora_inicio, data_hora_fim, nome_cliente, id_cliente, nome_tecnico, servico, id_servico, valor, obs } = req.body;
-    pool.query(queries.addOs, [data_hora_inicio, data_hora_fim, nome_cliente, id_cliente, nome_tecnico, servico, id_servico, valor, obs], (error, results) => {
+    const { data_hora_inicio, data_hora_fim, nome_cliente, endereco, numero_endereco, id_cliente, nome_tecnico, servico, id_servico, valor, obs, aberta } = req.body;
+    pool.query(queries.addOs, [data_hora_inicio, data_hora_fim, nome_cliente, endereco, numero_endereco, id_cliente, nome_tecnico, servico, id_servico, valor, obs, aberta], (error, results) => {
         if (error) throw error;
         res.status(201).send("OS criada");
     })
@@ -43,7 +43,7 @@ const removeOs = (req, res) => {
 
 const updateOs = (req, res) => {
     const id = parseInt(req.params.id);
-    const { data_hora_inicio, data_hora_fim, nome_cliente, id_cliente, nome_tecnico, servico, id_servico, valor, obs } = req.body;
+    const { data_hora_inicio, data_hora_fim, nome_cliente, endereco, numero_endereco, id_cliente, nome_tecnico, servico, id_servico, valor, obs, aberta } = req.body;
 
     pool.query(queries.getOsById, [id], (error, results) => {
         const noOsFound = !results.rows.length;
@@ -51,7 +51,7 @@ const updateOs = (req, res) => {
             res.send("OS não existe no banco de dados.");
         }
 
-        pool.query(queries.updateOs, [data_hora_inicio, data_hora_fim, nome_cliente, id_cliente, nome_tecnico, servico, id_servico, valor, obs, id], (error, results) => {
+        pool.query(queries.updateOs, [data_hora_inicio, data_hora_fim, nome_cliente, endereco, numero_endereco, id_cliente, nome_tecnico, servico, id_servico, valor, obs, aberta, id], (error, results) => {
             if (error) throw error;
             res.status(200).send("Os atualizada com sucesso")
         });
