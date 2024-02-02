@@ -8,7 +8,7 @@ const getServicos = (req, res) => {
     });
 };
 
-const getServicosById = (req, res) => {s
+const getServicosById = (req, res) => {
     const id = parseInt(req.params.id);
     pool.query(queries.getServicosById, [id], (error, results) => {
         if (error) throw error;

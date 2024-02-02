@@ -8,7 +8,7 @@ const getMateriais = (req, res) => {
     });
 };
 
-const getMateriaisById = (req, res) => {s
+const getMateriaisById = (req, res) => {
     const id = parseInt(req.params.id);
     pool.query(queries.getMateriaisById, [id], (error, results) => {
         if (error) throw error;
